@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
 
 import jakarta.validation.Valid;
 
@@ -21,7 +20,7 @@ import jakarta.validation.Valid;
 @RequestMapping("/api/runs")
 public class RunController {
 
-    // @Autowired // ! Not Recommended because it basically untestable
+    // @Autowired // ! Not Recommended because it's basically untestable
     private RunRepository runRepository;
 
     public RunController(RunRepository runRepository) {
@@ -56,7 +55,10 @@ public class RunController {
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PutMapping("{identifier}")
-    void updateOne(/** Validation api runs every time the run instance get created */
+    void updateOne(/**
+                    * Validation api runs every time the run instance get
+                    * created
+                    */
     @Valid
     /** Create run instance from request body */
     @RequestBody Run run, @PathVariable Integer identifier) {
