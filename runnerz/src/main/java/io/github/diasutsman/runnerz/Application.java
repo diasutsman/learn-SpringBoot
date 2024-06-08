@@ -1,13 +1,18 @@
 package io.github.diasutsman.runnerz;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class Application {
 
-	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
-	}
+    private static final Logger log = LoggerFactory.getLogger(Application.class);
+
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+        log.info("Run app test 123 2342343242342 234");
+    }
 
 }
