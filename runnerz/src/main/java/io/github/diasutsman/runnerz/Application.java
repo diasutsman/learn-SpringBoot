@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Bean;
 
 import io.github.diasutsman.runnerz.run.Location;
 import io.github.diasutsman.runnerz.run.Run;
-import io.github.diasutsman.runnerz.run.RunRepository;
+import io.github.diasutsman.runnerz.run.JDBCClientRunRepository;
 
 @SpringBootApplication
 public class Application {
