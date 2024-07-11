@@ -50,11 +50,11 @@ public class RunController {
             @Valid
             /** Create run instance from request body */
             @RequestBody Run run) {
-        runRepository.create(run);
+        runRepository.save(run);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @PutMapping("{identifier}")
+    @PutMapping("/{identifier}")
     void updateOne(/**
                     * Validation api runs every time the run instance get
                     * created
@@ -62,13 +62,22 @@ public class RunController {
     @Valid
     /** Create run instance from request body */
     @RequestBody Run run, @PathVariable Integer identifier) {
-        runRepository.update(run, identifier);
+        runRepository.save(run);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping("{identifier}")
+    @DeleteMapping("/{identifier}")
     void deleteOne(@PathVariable Integer identifier) {
-        runRepository.delete(identifier);
+        Optional<Run> run = runRepository.findById(identifier);
+        if (run.isEmpty()) {
+            throw new RunNotFoundException();
+        }
+        runRepository.delete(run.get());
+    }
+
+    @GetMapping("/location/{location}")
+    List<Run> findAllByLocation(@PathVariable Location location) {
+        return runRepository.findAllByLocation(location);
     }
 
 }
