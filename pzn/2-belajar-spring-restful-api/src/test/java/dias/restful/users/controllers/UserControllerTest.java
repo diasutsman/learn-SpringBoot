@@ -1,9 +1,12 @@
-package dias.restful.users;
+package dias.restful.users.controllers;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dias.restful.shared.responses.WebResponse;
 import dias.restful.shared.security.BCrypt;
+import dias.restful.users.User;
+import dias.restful.users.UserRepository;
+import dias.restful.users.models.RegisterUserRequest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
